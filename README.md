@@ -19,7 +19,7 @@ First, we split the data across different cores; A is row-partitioned, while B i
 
 Then, we multiply the sub-matrices and add the products in a “dot-product” fashion (even though they are matrices not vectors). The results are the diagonal submatrices.
 <p align="center">
-  <img src="pics/doc2pic.png" width="600" />
+  <img src="pics/doc2pic.png" width="500" />
 </p>
 
 We now permute the submatrix-rows across cores like in the following example:
@@ -29,7 +29,7 @@ We now permute the submatrix-rows across cores like in the following example:
 
 And repeat the same process to get the following elements:
 <p align="center">
-  <img src="pics/doc4pic.png" width="600" />
+  <img src="pics/doc4pic.png" width="500" />
 </p>
 
 We conduct this P times, where P is the number of cores used.
