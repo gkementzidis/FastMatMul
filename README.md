@@ -34,5 +34,5 @@ And repeat the same process to get the following elements:
 
 We conduct this P times, where P is the number of cores used.
 
-`funcs.h` is imported to `matrix_mul.c`, which demonstrates the algorithm for random matrices. The user has to input $N$ and $P$ as command-line arguments during execution. Notice that the computational time is reduced as the number of cores used increases. For instance, a $4096 \times 4096$ matrices multiplication takes $\sim 10$ minutes when $P=4$, while it only takes $\sim 1.5$ minutes when $P=16$. The implementation makes heavy use of MPI functions.
+`funcs.h` is imported to `matrix_mul.c`, which demonstrates the algorithm for random matrices. The user has to input $N$ and $P$ as command-line arguments during execution. Notice that the computational time is reduced as the number of cores used increases. For instance, a $4096 \times 4096$ matrices multiplication takes ~10 minutes when $P=4$, while it only takes ~1.5 minutes when $P=16$. The implementation makes heavy use of MPI functions.
 
