@@ -14,7 +14,7 @@ This implies that the overall calculation of all $N\times N$ elements of the pro
 
 First, we split the data across different cores; A is row-partitioned, while B is column-partitioned. In the following example, we use three cores:
 <p align="center">
-  <img src="pics/doc1pic.png" width="300" />
+  <img src="pics/doc1pic.png" width="600" />
 </p>
 
 Then, we multiply the sub-matrices and add the products in a “dot-product” fashion (even though they are matrices not vectors). The results are the diagonal submatrices.
