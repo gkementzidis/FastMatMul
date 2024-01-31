@@ -13,7 +13,9 @@ $$c_{i,j}=\sum_{k=0}^{N}a_{ik}b_{kj}$$
 This implies that the overall calculation of all $N\times N$ elements of the product matrix has time complexity $O\left(N^3\right)$. This is not a problem for small matrices, but one the size of the matrix increases (e.g., $N>1000$) the calculation becomes very expensive. As a result, we want to parallelize the computation.
 
 First, we split the data across different cores; A is row-partitioned, while B is column-partitioned. In the following example, we use three cores:
-![](pics/doc1pic.png)
+<p align="center">
+  <img src="pics/doc1pic.png" width="300" />
+</p>
 
 Then, we multiply the sub-matrices and add the products in a “dot-product” fashion (even though they are matrices not vectors). The results are the diagonal submatrices.
 ![](pics/doc2pic.png)
