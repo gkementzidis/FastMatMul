@@ -18,13 +18,21 @@ First, we split the data across different cores; A is row-partitioned, while B i
 </p>
 
 Then, we multiply the sub-matrices and add the products in a “dot-product” fashion (even though they are matrices not vectors). The results are the diagonal submatrices.
-![](pics/doc2pic.png)
+<p align="center">
+  <img src="pics/doc2pic.png" width="600" />
+</p>
 
 We now permute the submatrix-rows across cores like in the following example:
-![](pics/doc3pic.png)
+<p align="center">
+  <img src="pics/doc3pic.png" width="600" />
+</p>
 
 And repeat the same process to get the following elements:
-![](pics/doc4pic.png)
+<p align="center">
+  <img src="pics/doc4pic.png" width="600" />
+</p>
 
 We conduct this P times, where P is the number of cores used.
+
+`funcs.h` is imported to `matrix_mul.c`, which demonstrates the algorithm for random matrices. The user has to input $N$ and $P$ as command-line arguments during execution. Notice that the computational time is reduced as the number of cores used increases. For instance, a $4096 \times 4096$ matrices multiplication takes $\sim 10$ minutes when $P=4$, while it only takes $\sim 1.5$ minutes when $P=16$. The implementation makes heavy use of MPI functions.
 
