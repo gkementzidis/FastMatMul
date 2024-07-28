@@ -1,0 +1,17 @@
+#!/bin/bash
+#SBATCH --job-name=multiplication
+#SBATCH --ntasks-per-node=16
+#SBATCH --nodes=1
+#SBATCH -p short-28core
+#SBATCH --time=10:00
+#SBATCH --out=result.out
+#SBATCH --error=result.err
+
+# load a gcc module
+module load mvapich2/gcc12.1/2.3.7
+
+# compile the code with the MPI compiler wrapper
+mpicc matrix_mul.c -o mat
+
+# execute the code with MPI
+mpirun ./mat
