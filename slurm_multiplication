@@ -14,4 +14,4 @@ module load mvapich2/gcc12.1/2.3.7
 mpicc matrix_mul.c -o mat
 
 # execute the code with MPI
-mpirun ./mat
+mpirun ./mat 16 512
