@@ -56,4 +56,19 @@ Notice that the computational time is reduced as the number of cores used increa
 
 ## Analysis
 
-We are analyzing the scalability and speed increase of the algorithm. **More coming soon...**
+We are analyzing the scalability and speed increase of the algorithm. Let's denote the computing time of a single floating point operation as $t_\text{flop}$ and the time of moving a data unit from one core to the nearest core as $t_\text{comm}$. Then, the product of two $N \times N$ matrices on a single core requires $T(1,N) = c \cdot N^3 \cdot t_\text{flop}$ time. Similarly, on $P$ processors it requires:
+
+$c \cdot P^2 \cdot \frac{N}{P}^3 \cdot t_\text{flop} = c \cdot N^3/P \cdot t_\text{flop}$
+
+since we have to carry out $P^2$ multiplications of $(N/P) \times (N/P)$ matrices. The cost of tranferring data (size $N^2/P$) across cores (happens $P-1$ times) is:
+
+$(P-1) \cdot \frac{N^2}{P} \cdot t_\text{comm} \approx N^2 \cdot t_\text{comm}$
+
+So, the total computation time is:
+
+$T(P,N) = c \cdot N^3/P \cdot t_\text{flop} + N^2 \cdot t_\text{comm} \approx c \cdot N^3/P \cdot t_\text{flop}$
+
+where we keep the leading term ($N^3$) when the matrix size becomes sufficiently large. As a result, we expect the computing time to be proportional to $\frac{N^3}{P}$.
+
+
+**More coming soon...**
