@@ -44,9 +44,11 @@ After installing MPI and the appropriate compilers you can open a terminal and r
 ### Running this on an HPC cluster
 We ran this code on SeaWulf, the high-performance computing (HPC) cluster at Stony Brook University. The job scheduling is handled by Slurm, thus I have included my slurm script for most implementations (for the ones up to 28 cores - for more cores, I have to modify the slurm script to use a different queue). For example, when using $P=16$ cores and $N=512$, we have:
 
-`#SBATCH --ntasks-per-node=16
-#SBATCH --nodes=1
-#SBATCH -p short-28core`
+`#SBATCH --ntasks-per-node=16`
+
+`#SBATCH --nodes=1`
+
+`#SBATCH -p short-28core`
 
 We don't need to use more than one node, since this parallel job is not too computationally heavy (memory-wise) and it isn't split to that many cores. Later in the script we see `module load mvapich2/gcc12.1/2.3.7`, in which we specify the module which allows us to use the `mpicc` and `mpirun` commands. Finally, `mpicc matrix_mul.c -o mat` and `mpirun ./mat 16 512`.
 
